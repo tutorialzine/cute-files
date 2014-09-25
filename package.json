@@ -1,0 +1,36 @@
+{
+  "name": "cute-files",
+  "version": "1.0.0",
+  "description": "Turn any folder on your computer into a cute file browser, available on the local network.",
+  "main": "cute-files.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "file",
+    "browser",
+    "files"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martinaglv/cute-files"
+  },
+  "author": {
+    "name": "Martin Angelov",
+    "email": "martin@tutorialzine.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.3.0",
+    "content-disposition": "^0.3.0",
+    "express": "^4.9.4"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "cute-files": "cute-files.js"
+  },
+  "readmeFilename": "Readme.md",
+  "engines": {
+    "node": ">= 0.10.x"
+  }
+}
