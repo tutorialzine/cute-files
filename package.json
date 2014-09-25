@@ -1,6 +1,6 @@
 {
   "name": "cute-files",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turn any folder on your computer into a cute file browser, available on the local network.",
   "main": "cute-files.js",
   "scripts": {

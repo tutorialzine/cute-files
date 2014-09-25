@@ -4,7 +4,7 @@ This is a node.js command line utility that turns the current working directory 
 
 ## Design and inspiration
 
-It is based on [tutorialzine's file browser tutorial](http://tutorialzine.com/2014/09/cute-file-browser-jquery-ajax-php/). 
+It is based on [tutorialzine's file browser tutorial](http://tutorialzine.com/2014/09/cute-file-browser-jquery-ajax-php/). See a live demo [here](http://demo.tutorialzine.com/2014/09/cute-file-browser-jquery-ajax-php/).
 
 
 [![Cute files preview](http://cdn.tutorialzine.com/wp-content/uploads/2014/09/file-and-folder-grid.jpg)](http://tutorialzine.com/2014/09/cute-file-browser-jquery-ajax-php/)
@@ -19,7 +19,7 @@ It is based on [tutorialzine's file browser tutorial](http://tutorialzine.com/20
 
 ## Installation
 
-This utility is available on npm, so installation is a breeze.
+This utility is available on npm, so installation is a breeze. Use the **-g** flag:
 
 ```bash
 npm install -g cute-files
@@ -35,14 +35,12 @@ Make the current folder available on `<yourip>:3000` on the local network:
 
 ```bash
 cute-files
-
 ```
 
 Make the current folder available on `<yourip>:12345` on the local network:
 
 ```bash
 cute-files --port 12345
-
 ```
 
 ### Notes

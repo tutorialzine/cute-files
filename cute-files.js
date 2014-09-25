@@ -39,7 +39,7 @@ app.use('/', express.static(path.join(__dirname, 'frontend')));
 
 app.use('/files', express.static(process.cwd(), {
 	index: false,
-	setHeaders: function(req, path){
+	setHeaders: function(res, path){
 
 		// Set header to force files to download
 
