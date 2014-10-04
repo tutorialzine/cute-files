@@ -1,5 +1,4 @@
-var fs = require('fs'),
-	path = require('path');
+var fs = require('fs');
 
 
 module.exports = function scan(dir, alias){
@@ -28,7 +27,7 @@ function walk(dir, prefix){
 
 	}).map(function(f){
 
-		var p = path.join(dir, f),
+		var p = (dir + '/' + f).replace('./', ''),
 			stat = fs.statSync(p);
 
 		if(stat.isDirectory()){
@@ -36,7 +35,7 @@ function walk(dir, prefix){
 			return {
 				name: f,
 				type: 'folder',
-				path: path.join(prefix, p),
+				path: prefix + '/' + p,
 				items: walk(p, prefix)
 			};
 
@@ -45,7 +44,7 @@ function walk(dir, prefix){
 		return {
 			name: f,
 			type: 'file',
-			path: path.join(prefix, p),
+			path: prefix + '/' + p,
 			size: stat.size
 		}
 
