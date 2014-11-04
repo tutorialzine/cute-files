@@ -329,7 +329,7 @@ $(function(){
 
 					fileType = fileType.length > 1 ? fileType[fileType.length-1] : '';
 
-					icon = '<span class="icon file f-' + fileType + '">' + fileType + '</span>';
+					icon = '<span class="icon file f-' + fileType.toLowerCase() + '">' + fileType + '</span>';
 
 					var file = $('<li class="files"><a href="'+ f.path+'" title="'+ f.path +'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');
 					file.appendTo(fileList);
