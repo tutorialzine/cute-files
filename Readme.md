@@ -43,6 +43,12 @@ Make the current folder available on `<yourip>:12345` on the local network:
 cute-files --port 12345
 ```
 
+Make the current folder available on `<yourip>:12345` on the local network and open browser:
+
+```bash
+cute-files --port 12345 --launch
+```
+
 ### Notes
 
 Files starting with a dot are assumed to be private and are not served.

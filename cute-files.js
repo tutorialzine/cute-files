@@ -15,6 +15,7 @@ var program = require('commander');
 program
 	.version(pkg.version)
 	.option('-p, --port <port>', 'Port on which to listen to (defaults to 3000)', parseInt)
+	.option('-l, --launch', 'Launch default web browser to local server')
 	.parse(process.argv);
 
 var port = program.port || 3000;
@@ -60,3 +61,9 @@ app.get('/scan', function(req,res){
 app.listen(port);
 
 console.log('Cute files is running on port ' + port);
+
+// opening users browser
+var open = require('open'); 
+
+if(program.launch)
+	open('http://localhost:' + port);

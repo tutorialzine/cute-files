@@ -24,7 +24,8 @@
   "dependencies": {
     "commander": "^2.3.0",
     "content-disposition": "^0.3.0",
-    "express": "^4.9.4"
+    "express": "^4.9.4",
+    "open": "0.0.5"
   },
   "preferGlobal": true,
   "bin": {
