@@ -2,7 +2,7 @@
 
 var path = require('path');
 var express = require('express');
-var contentDisposition = require('content-disposition');
+var contentDisposition = require('./node_modules/express/node_modules/content-disposition');
 var pkg = require( path.join(__dirname, 'package.json') );
 
 var scan = require('./scan');
