@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+var spawn  = require('child_process').spawn;
+var bin = 'google-chrome';
+var os = require('os');
+var fs     = require('fs');
+
 var path = require('path');
 var express = require('express');
 var contentDisposition = require('content-disposition');
@@ -7,6 +12,39 @@ var pkg = require( path.join(__dirname, 'package.json') );
 
 var scan = require('./scan');
 
+var darwinBin = [
+        '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+      , '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary'
+      , '/opt/homebrew-cask/Caskroom/google-chrome/stable-channel/Google Chrome.app/Contents/MacOS/Google Chrome'
+      , '/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google Chrome'
+];
+var linuxBin = [
+        '/usr/bin/google-chrome'
+      , '/usr/bin/chromium-browser'
+      , '/usr/bin/chromium'
+];
+
+if (os.platform() == 'darwin') {
+  bin = darwinBin.reduce(function (p, c) {
+    if (p)
+        return p;
+      return fs.existsSync(c) && c;
+  }, null);
+
+  if (!bin)
+      throw(new Error('Chrome or Canary were not found'));
+}
+
+if (os.platform() == 'linux') {
+  bin = linuxBin.reduce(function (p, c) {
+    if (p)
+        return p;
+      return fs.existsSync(c) && c;
+  }, null);
+
+  if (!bin)
+      throw(new Error('Chrome or Chromium were not found'));
+}
 
 // Parse command line options
 
@@ -18,6 +56,12 @@ program
 	.parse(process.argv);
 
 var port = program.port || 3000;
+
+var args   = [
+        '--app=http://localhost:' + port
+      , '--disk-cache-size 0'
+      , '--no-proxy-server'
+];
 
 
 // Scan the directory in which the script was called. It will
@@ -60,3 +104,12 @@ app.get('/scan', function(req,res){
 app.listen(port);
 
 console.log('Cute files is running on port ' + port);
+
+if (process.env.HOME)
+    args.push('--user-data-dir=' + path.join(process.env.HOME, '.md'));
+
+
+spawn(bin, args)
+    .on('exit', process.exit.bind(process, 0))
+    .stderr.pipe(process.stderr);
+
