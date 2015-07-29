@@ -106,10 +106,11 @@ app.listen(port);
 console.log('Cute files is running on port ' + port);
 
 if (process.env.HOME)
-    args.push('--user-data-dir=' + path.join(process.env.HOME, '.md'));
+    args.push('--user-data-dir=' + path.join(process.env.HOME, '.cute-files'));
 
+if (fs.existsSync(bin)) 
+    spawn(bin, args)
+        .on('exit', process.exit.bind(process, 0))
+        .stderr.pipe(process.stderr);
 
-spawn(bin, args)
-    .on('exit', process.exit.bind(process, 0))
-    .stderr.pipe(process.stderr);
 
