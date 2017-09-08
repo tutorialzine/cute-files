@@ -51,7 +51,7 @@ app.use('/files', express.static(process.cwd(), {
 // This endpoint is requested by our frontend JS
 
 app.get('/scan', function(req,res){
-	res.send(tree);
+	res.send(scan('.', 'files'));
 });
 
 
